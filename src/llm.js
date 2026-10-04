@@ -253,7 +253,7 @@ async function streamOpenAI({ apiKey, baseURL, model, system, turns, imageDataUr
       messages.push({ role: t.role, content: t.text });
     }
   });
-  const pending = client.chat.completions.create({ model, messages, stream: true, max_tokens: maxTokens });
+  const pending = client.chat.completions.create({ model, messages, stream: true, max_completion_tokens: maxTokens });
   let stream;
   if (typeof onResponse === 'function' && pending && typeof pending.withResponse === 'function') {
     // The gateway stamps x-publik-* headers at admission; hand the raw
